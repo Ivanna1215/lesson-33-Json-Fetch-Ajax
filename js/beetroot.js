@@ -11,7 +11,7 @@ async function getResponse() {
     let content;
     let response =  await fetch("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json");
     content = await response.json()
-    content = content.splice(0,60);
+    // content = content.splice(0,60);
     console.log (content);
     console.log(content[2].txt)
     // let list = document.querySelector('.posts');
@@ -31,7 +31,6 @@ async function getResponse() {
             }
 
 
-
     // for (let i = 0; i<content.length; i++) {
     //     console.log(`Name ${content[i].txt}
     //                   CC  ${content[i].cc}
@@ -42,3 +41,23 @@ async function getResponse() {
 }
 // getResponse();
 
+
+let student = {
+    name: 'John',
+    age: 30,
+    isAdmin: false,
+    courses: ['html', 'css', 'js'],
+    wife: null
+  };
+  
+  let json = JSON.stringify(student);
+  
+  console.log(json);
+
+  let user = {
+    name: "Ivanna Kovaliv",
+    age: 31,
+  };
+
+  let userNew = JSON.stringify(user);
+  console.log(userNew);
