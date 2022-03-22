@@ -6,14 +6,17 @@
 // .then(function(myJson){
 //     console.log(JSON.stringify())
 // })
-let content;
+
 async function getResponse() {
+    let content;
     let response =  await fetch("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json");
     content = await response.json()
     content = content.splice(0,60);
     console.log (content);
     console.log(content[2].txt)
-    let list = document.querySelector('.posts');
+    // let list = document.querySelector('.posts');
+    let list = document.createElement('ol');
+    document.body.append(list);
     let key;
 
     for (key in content) {
@@ -37,5 +40,5 @@ async function getResponse() {
 
 
 }
-getResponse();
+// getResponse();
 
