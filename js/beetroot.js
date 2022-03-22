@@ -13,10 +13,29 @@ async function getResponse() {
     content = content.splice(0,60);
     console.log (content);
     console.log(content[2].txt)
-    for (let i = 0; i<content.length; i++) {
-        console.log(`Name ${content[i].txt}
-                      CC  ${content[i].cc}
-                     rate  ${content[i].rate}`)
-    }
+    let list = document.querySelector('.posts');
+    let key;
+
+    for (key in content) {
+        list.innerHTML +=`
+        <li class="post">
+        <h4> ${content[key].txt}</h4>
+        <div>${content[key].cc}</div>
+        <div>${content[key].rate}</div>
+        </li>
+        `
+                // console.log(content[key])
+            }
+
+
+
+    // for (let i = 0; i<content.length; i++) {
+    //     console.log(`Name ${content[i].txt}
+    //                   CC  ${content[i].cc}
+    //                  rate ${content[i].rate}`)
+    // }
+
+
 }
 getResponse();
+
