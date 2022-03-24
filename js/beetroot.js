@@ -7,57 +7,94 @@
 //     console.log(JSON.stringify())
 // })
 
+
+
 async function getResponse() {
-    let content;
-    let response =  await fetch("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json");
-    content = await response.json()
-    // content = content.splice(0,60);
-    console.log (content);
-    console.log(content[2].txt)
-    // let list = document.querySelector('.posts');
-    let list = document.createElement('ol');
-    document.body.append(list);
-    let key;
-
-    for (key in content) {
-        list.innerHTML +=`
-        <li class="post">
-        <h4> ${content[key].txt}</h4>
-        <div>${content[key].cc}</div>
-        <div>${content[key].rate}</div>
-        </li>
-        `
-                // console.log(content[key])
-            }
-
-
-    // for (let i = 0; i<content.length; i++) {
-    //     console.log(`Name ${content[i].txt}
-    //                   CC  ${content[i].cc}
-    //                  rate ${content[i].rate}`)
-    // }
-
+  let content;
+  let response = await fetch("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json");
+  content = await response.json()
+  console.log(content);
+let list = document.createElement('ol');
+document.body.append(list);
+  content.forEach(element => {
+    let li = document.createElement('li');
+    let h4 = document.createElement('h4');
+    h4.innerText = element.txt;
+    li.append(h4);
+    let cc = document.createElement('div');
+    cc.innerText = element.cc;
+    li.append(cc);
+    let rate = document.createElement('div');
+    rate.innerText = element.rate;
+    li.append(rate);
+    list.append(li);
+  });
 
 }
-// getResponse();
+
+async function getFilter() {
+
+  let content;
+  let response = await fetch("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json");
+  content = await response.json()
+
+  let ol = document.querySelector('ol');
+  ol.remove();
+
+let num = document.getElementById('num');
+let newContent = content.filter(element=>element.rate>num.value);
+console.log(newContent);
 
 
-let student = {
-    name: 'John',
-    age: 30,
-    isAdmin: false,
-    courses: ['html', 'css', 'js'],
-    wife: null
-  };
-  
-  let json = JSON.stringify(student);
-  
-  console.log(json);
 
-  let user = {
-    name: "Ivanna Kovaliv",
-    age: 31,
-  };
+newContent.forEach(element => {
+let list = document.createElement('ol');
+document.body.append(ol);
 
-  let userNew = JSON.stringify(user);
-  console.log(userNew);
+let li = document.createElement('li');
+let h4 = document.createElement('h4');
+h4.innerText = element.txt;
+li.append(h4);
+let cc = document.createElement('div');
+cc.innerText = element.cc;
+li.append(cc);
+let rate = document.createElement('div');
+rate.innerText = element.rate;
+li.append(rate);
+list.append(li);
+})
+}
+
+
+
+
+
+
+
+
+
+
+// let student = {
+//     name: 'John',
+//     age: 30,
+//     isAdmin: false,
+//     courses: ['html', 'css', 'js'],
+//     wife: null
+//   };
+
+  // let json = JSON.stringify(student);
+
+  // console.log(json);
+
+  // let user = {
+  //   name: "Ivanna Kovaliv",
+  //   age: 31,
+  // };
+
+  // let userNew = JSON.stringify(user);
+  // console.log(userNew);
+
+  // let numbers = "[0,1,2,3]";
+  // numbers = JSON.parse(numbers);
+  // console.log(numbers);
+
