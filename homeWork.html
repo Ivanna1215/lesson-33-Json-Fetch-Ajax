@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home work</title>
+    <style>
+        .container{
+            /* border: 2px solid red; */
+            border-radius: 50px;
+            width: 450px;
+            height: 200px;
+            margin: 30px auto;
+            /* padding: 10px; */
+            display: flex;
+            flex-direction: column;
+            /* justify-content: center; */
+            align-items: center;
+            background-color: cornflowerblue;
+            position: relative;
+        }
+        h3{
+            /* border: 2px solid black; */
+            width: 150px;
+            text-align: center;
+            color: yellow;
+        }
+        .main {
+            /* border: 1px solid blue; */
+            width: 350px;
+            /* margin:  auto; */
+            position: absolute;
+            bottom: 40%;
+          right: 5%;
+
+        }
+
+        #btn {
+            border-radius: 10px;
+            border: none;
+            height: 30px;
+            color: blue;
+        }
+        #inp {
+            border-radius: 10px;
+            height: 30px;
+            border: none;
+            color: blue;
+    
+        }
+        .typeMovie {
+            border-radius: 10px;
+            height: 30px;
+            border: none;
+             color: blue;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h3>Movie search</h3>
+   <div class="main">
+    <input type="text" placeholder="Input name movie" id="inp">
+<select class="typeMovie">
+    <option value="movie">movie</option>
+     <option value="series">series</option>
+     <option value="episode">episode</option>
+ </select>
+<button id="btn"
+onclick="showMovie()"
+
+>Search</button>
+   </div>
+</div>
+
+
+    <script src="./js/homeWork.js"></script>
+</body>
+</html>

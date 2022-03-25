@@ -9,10 +9,12 @@
 
 
 
+
+
 async function getResponse() {
   let content;
   let response = await fetch("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json");
-  content = await response.json()
+  content = await response.json();
   console.log(content);
 let list = document.createElement('ol');
 document.body.append(list);
@@ -34,26 +36,24 @@ document.body.append(list);
 
 async function getFilter() {
 
+  let ol = document.querySelector('ol');
+  ol.remove();
+
   let content;
   let response = await fetch("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json");
   content = await response.json()
-
-  let ol = document.querySelector('ol');
-  ol.remove();
+ 
 
 let num = document.getElementById('num');
 let newContent = content.filter(element=>element.rate>num.value);
 console.log(newContent);
 
-
-
 newContent.forEach(element => {
-let list = document.createElement('ol');
-document.body.append(ol);
-
+let listTwo = document.createElement('ol');
 let li = document.createElement('li');
 let h4 = document.createElement('h4');
 h4.innerText = element.txt;
+console.log(h4)
 li.append(h4);
 let cc = document.createElement('div');
 cc.innerText = element.cc;
@@ -61,8 +61,10 @@ li.append(cc);
 let rate = document.createElement('div');
 rate.innerText = element.rate;
 li.append(rate);
-list.append(li);
+listTwo.append(li);
+document.body.append(listTwo);
 })
+
 }
 
 
